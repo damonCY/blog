@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class BinaryTree {
+      constructor() {
+        this.root = null;
+      }
+      node(key) {
+        return {
+          key: key,
+          right: null,
+          left: null
+        }
+      }
+
+      insert(parentNode, key) {
+        if (this.root === null) {
+          const node = this.node(key);
+          return this.root = node;
+        }
+        // 右子树
+        if (key > parentNode.key) {
+          if (parentNode.right === null) {
+            const node = this.node(key);
+            parentNode.right = node;
+          } else {
+            this.insert(parentNode.right, key);
+          }
+        } else {
+          // 左子树
+          if(parentNode.left === null) {
+            const node = this.node(key);
+            parentNode.left = node;
+          } else {
+            this.insert(parentNode.left, key);
+          }
+        }
+      }
+
+      getRoot() {
+        return this.root;
+      }
+      
+      // 前序遍历
+      preTraverse(node, collect) {
+        if (node.key !== null) {
+          collect.push(node.key);
+          if (node.left) {
+            this.preTraverse(node.left, collect)
+          }
+          if(node.right) {
+            this.preTraverse(node.right, collect);
+          }
+        }
+      }
+
+      // 中序遍历
+      inorderTraverse(node, collect) {
+        if (node.left !== null) {
+          this.inorderTraverse(node.left, collect)
+        }
+        if(node.key !==null ) {
+          collect.push(node.key);
+        }
+
+        if(node.right) {
+          this.inorderTraverse(node.right, collect)
+        }
+      }
+
+      // 后续遍历
+      backTraverse(node, collect) {
+        if (node.left) {
+          this.backTraverse(node.left, collect);
+        }
+        if(node.right) {
+          this.backTraverse(node.right, collect);
+        }
+        if(node.key) {
+          collect.push(node.key);
+        }
+      }
+
+      // 获取最小值
+      minNode(node){
+        if(node.left !== null) {
+          this.minNode(node.left)
+        } else {
+          console.log('最小值：', node.key);
+        }
+      }
+
+      // 获取最大值
+      maxNode(node) {
+        if(node.right !== null) {
+          this.maxNode(node.right)
+        } else {
+          console.log('最大值：', node.key);
+        }
+      }
+
+      // 查找指定值
+      searchNode(node, key, collect) {
+        if(node === null) {
+          return false
+        }
+        if(key < node.key) {
+          collect.push(node.key);
+
+          this.searchNode(node.left, key, collect);
+        } else if (key > node.key){
+          collect.push(node.key);
+
+          this.searchNode(node.right, key, collect)
+        } else {
+          collect.push(node.key);
+        }
+      }
+    }
+    const binaryTrees = new BinaryTree()
+    const nodes = [8, 3, 10, 1, 5, 14, 4, 6, 13];
+    nodes.forEach(key => {
+      // （为了方便理解）每次将新数据插入到 最新的树(binaryTress.getRoot())中
+      binaryTrees.insert(binaryTrees.getRoot(), key)
+    });
+    // 树
+    console.log(`当前树:`, binaryTrees.getRoot())
+    // 前序遍历
+    const preMap = [];
+    binaryTrees.preTraverse(binaryTrees.getRoot(), preMap);
+    console.log(`前序遍历: ${preMap}`)
+    // 中序遍历
+    const inorderMap = [];
+    binaryTrees.preTraverse(binaryTrees.getRoot(), inorderMap);
+    console.log(`中序遍历: ${inorderMap}`)
+    // 后续遍历
+    const backMap = [];
+    binaryTrees.backTraverse(binaryTrees.getRoot(), backMap);
+    console.log(`后序遍历: ${backMap}`)
+
+    // 最小值
+    binaryTrees.minNode(binaryTrees.getRoot())
+    // 最大值
+    binaryTrees.maxNode(binaryTrees.getRoot())
+
+    // 查找指定值
+    const searchCollect = [];
+    const targetKey = 4;
+    binaryTrees.searchNode(binaryTrees.getRoot(), targetKey, searchCollect);
+    // 查找路径中最后一个值为指定值，则存在
+    console.log(`查找指定值： ${targetKey}，结果：${searchCollect.unshift() === targetKey ? '存在': '不存在'}，查询路径：${searchCollect}`)
+  </script>
+</body>
+</html>
