@@ -4,4 +4,4 @@
 
 
 ## 个人文章
-- [二叉树](https://github.com/damonCY/blog/issues/1)
+- [二叉树查找](https://github.com/damonCY/blog/issues/1)
