@@ -76,12 +76,12 @@
       }
 
       // 后续遍历
-      backTraverse(node, collect) {
+      postTraverse(node, collect) {
         if (node.left) {
-          this.backTraverse(node.left, collect);
+          this.postTraverse(node.left, collect);
         }
         if(node.right) {
-          this.backTraverse(node.right, collect);
+          this.postTraverse(node.right, collect);
         }
         if(node.key) {
           collect.push(node.key);
@@ -141,9 +141,9 @@
     binaryTrees.preTraverse(binaryTrees.getRoot(), inorderMap);
     console.log(`中序遍历: ${inorderMap}`)
     // 后续遍历
-    const backMap = [];
-    binaryTrees.backTraverse(binaryTrees.getRoot(), backMap);
-    console.log(`后序遍历: ${backMap}`)
+    const postMap = [];
+    binaryTrees.postTraverse(binaryTrees.getRoot(), postMap);
+    console.log(`后序遍历: ${postMap}`)
 
     // 最小值
     binaryTrees.minNode(binaryTrees.getRoot())
