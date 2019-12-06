@@ -6,5 +6,5 @@
 ## 个人文章
 - [二叉树查找](https://github.com/damonCY/blog/issues/1)
 
-> Node
+> Node.js
 - [child_process](https://github.com/damonCY/blog/issues/2)
