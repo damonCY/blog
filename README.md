@@ -8,3 +8,6 @@
 
 > Node.js
 - [child_process](https://github.com/damonCY/blog/issues/2)
+
+> npm 模块解读
+- [delegate](https://github.com/damonCY/blog/issues/3)
