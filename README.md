@@ -1,13 +1,26 @@
+# blog
 
-# 个人博客
-**如对你有帮助是我的荣幸，你的 star 是对我最大的支持！**
+Personal blog articles and example code snippets maintained with GitHub Issues.
 
+## Overview
 
-## 个人文章
+This repository is used to collect personal technical notes, short articles, and small learning examples.
+
+It currently includes:
+
+- blog articles published through GitHub Issues
+- example code under the `example/` directory
+
+## Articles
+
 - [二叉树查找](https://github.com/damonCY/blog/issues/1)
-
-> Node.js
 - [child_process](https://github.com/damonCY/blog/issues/2)
-
-> npm 模块解读
 - [delegate](https://github.com/damonCY/blog/issues/3)
+
+## Example Code
+
+- `example/binaryTrees/` — a simple binary tree example written in JavaScript
+
+## Purpose
+
+This repository serves as a lightweight place for recording learning notes and sharing small technical examples.
